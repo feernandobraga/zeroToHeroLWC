@@ -1,0 +1,60 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card title="Quiz App In LWC">
+
+        <div class=" slds-var-m-around_medium">
+
+            <!-- display the result and apply the class programmatically -->
+            <template if:true={isSubmitted}>
+                <div class={isScoredFull}>Your score is {correctAnswers} out of {myQuestions.length}</div>
+            </template>
+
+
+
+            <form>
+                <template for:each={myQuestions} for:item="quiz">
+                    <div key={quiz.id} class="slds-var-m-bottom_large">
+
+                        <!-- Question Header -->
+                        <div>
+                            <strong>
+                                {quiz.id} - {quiz.question}
+                            </strong>
+                        </div>
+
+                        <!-- Options -->
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <input type="radio" name={quiz.id} value="a" onchange={changeHandler} />
+                                a) {quiz.answers.a}
+                            </div>
+
+                            <div class="slds-col">
+                                <input type="radio" name={quiz.id} value="b" onchange={changeHandler} />
+                                b) {quiz.answers.b}
+                            </div>
+
+                            <div class="slds-col">
+                                <input type="radio" name={quiz.id} value="c" onchange={changeHandler} />
+                                c) {quiz.answers.c}
+                            </div>
+                        </div>
+
+                    </div>
+                </template>
+
+                <lightning-button variant="brand" type="submit" label="Submit Answers" class="slds-m-around_small"
+                    onclick={handleSubmitOnClick} disabled={isSubmitDisabled}>
+                </lightning-button>
+
+                <lightning-button variant="brand" type="reset" label="Reset Answers" class="slds-m-around_small"
+                    onclick={handleResetOnClick}>
+                </lightning-button>
+
+
+            </form>
+
+        </div>
+
+    </lightning-card>
+</template>

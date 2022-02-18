@@ -1,0 +1,74 @@
+<template>
+
+    <lightning-card title="Hello">
+        <lightning-button label="New" slot="actions"></lightning-button>
+        <p class="slds-var-p-horizontal_small">My name is {name}</p>
+        <p class="slds-var-p-horizontal_small">My role is {role}</p>
+
+        <p slot="footer">
+            <lightning-input class="slds-var-m-horizontal_x-large" type="text" onkeyup={changeRole}
+                label="change your role">
+            </lightning-input>
+        </p>
+    </lightning-card>
+
+    <lightning-card title="Hello" class="slds-var-p-around_large">
+        <lightning-button label="New" slot="actions"></lightning-button>
+        <p class="slds-var-p-horizontal_small">My address is: {address.city}</p>
+        <p class="slds-var-p-horizontal_small">My state is: {address.state} </p>
+
+        <p slot="footer">
+            <lightning-input class="slds-var-m-horizontal_x-large" type="text" onkeyup={changeAddress}
+                label="change your city">
+            </lightning-input>
+        </p>
+    </lightning-card>
+
+
+
+
+    <lightning-card title="Hello" class="slds-var-p-around_large">
+        <lightning-button label="New" slot="actions"></lightning-button>
+        <p class="slds-var-p-horizontal_small">My age is: {profile.age}</p>
+        <p class="slds-var-p-horizontal_small">My gender is: {profile.gender} </p>
+
+        <p slot="footer">
+            <lightning-input class="slds-var-m-horizontal_x-large" type="text" onkeyup={changeProfile}
+                label="change your age">
+            </lightning-input>
+        </p>
+    </lightning-card>
+
+
+    <lightning-card title="Iterator Loop" class="slds-var-p-around_large">
+        <template iterator:ceoobject={ceoList}>
+            <!-- you use .value to retrieve value from an iterator-->
+            <div key={ceoobject.value.id}>
+
+                <!-- you can only use .first wth Iterators -->
+                <div if:true={ceoobject.first}>
+                    <strong>First Place</strong>
+                    </br></br>
+                </div>
+
+                <li>
+                    <strong>{ceoobject.value.company}</strong>
+                </li>
+
+                <li>
+                    {ceoobject.value.name}
+                </li>
+
+                <!-- you can only use .last wth Iterators -->
+                <div if:true={ceoobject.last}>
+                    </br>
+                    <p>more to come...</p>
+                </div>
+
+            </div>
+
+        </template>
+    </lightning-card>
+
+
+</template>
